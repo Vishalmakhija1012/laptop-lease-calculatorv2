@@ -1,0 +1,1357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.65">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    span.s1 {font: 12.0px 'PingFang SC'}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Laptop Lease vs. Buy Calculator&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f3f4f6;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 900px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.input-group label {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.input-group select, .input-group input {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #d1d5db;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%; /* Ensure inputs take full width */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.result-box {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #eff6ff; /* Light blue */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #bfdbfe;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.info-icon {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #6b7280;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9em; /* Slightly smaller for inline */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-left: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>vertical-align: middle;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: inline-flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #e5e7eb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1; /* Center the 'i' vertically */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.info-icon:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #d1d5db;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1000;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow: auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: rgba(0,0,0,0.4);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(5px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>-webkit-backdrop-filter: blur(5px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-content {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fefefe;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 10% auto; /* Adjusted margin for better mobile view */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 90%; /* Responsive width */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 500px; /* Max width for desktop */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.close-button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>right: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 28px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #9ca3af;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.close-button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #6b7280;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-title {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.25rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #374151;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.comparison-table {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-collapse: collapse;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.comparison-table th, .comparison-table td {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #e5e7eb;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: left;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>white-space: nowrap; /* Prevent text wrapping in table cells */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.comparison-table th {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f3f4f6;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #4b5563;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.comparison-table tr:nth-child(even) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f9fafb;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.comparison-table td:not(:first-child) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: right;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.subtotal-row {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #e0f2fe !important; /* Light blue for subtotal */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #3b82f6;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.total-row {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #bfdbfe !important; /* Deeper blue for overall total */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #1f2937;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.summary-section {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f0f9ff; /* Light blue background */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: left;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #bfdbfe; /* Light blue border */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.summary-section h3 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #1d4ed8; /* Darker blue heading */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.loading-spinner {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 4px solid rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-left-color: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: spin 1s linear infinite;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>vertical-align: middle;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-left: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes spin {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>0% { transform: rotate(0deg); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>100% { transform: rotate(360deg); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.overflow-x-auto {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow-x: auto; /* Enable horizontal scrolling for tables */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Responsive adjustments for input groups */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.input-group {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-width: 180px; /* Ensure inputs don't become too narrow on small screens */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 768px) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.input-group {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>min-width: unset;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.grid-cols-1.md:grid-cols-2.lg:grid-cols-3 &gt; div {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>min-width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="bg-gray-100 flex flex-col items-center justify-center py-12 px-4 min-h-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="text-center mb-12"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-4xl sm:text-5xl font-bold text-gray-800 mb-2"&gt;Laptop Lease vs. Buy Calculator&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-gray-600 text-lg sm:text-xl"&gt;See how much your company can save by renting your laptops.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Inputs Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-2xl font-semibold mb-6 text-gray-700"&gt;1. Your Company Details&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Cost of Buying Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="col-span-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-semibold mb-3 text-gray-700"&gt;Cost of Buying&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Mode of Finance --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-group flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="modeOfFinance" class="text-gray-600 mb-1"&gt;Mode of Finance&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;select id="modeOfFinance" class="rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="equity" selected&gt;Fund by Equity&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="loan"&gt;Fund by Loan&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Interest Rate / Equity Cost --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-group flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="interestRate" class="text-gray-600 mb-1"&gt;Interest Rate / Equity Cost (%)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;select id="interestRate" class="rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="9"&gt;9%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="10"&gt;10%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="11"&gt;11%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="12" selected&gt;12%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="13"&gt;13%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="14"&gt;14%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="15"&gt;15%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Number of Laptops --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-group flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="numLaptops" class="text-gray-600 mb-1"&gt;Number of Laptops&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;select id="numLaptops" class="rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="1"&gt;1&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="10"&gt;10&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="20"&gt;20&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="30"&gt;30&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="40"&gt;40&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="50" selected&gt;50&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="80"&gt;80&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="100"&gt;100&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="150"&gt;150&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="200"&gt;200&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="250"&gt;250&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="300"&gt;300&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="400"&gt;400&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="500"&gt;500&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="1000"&gt;1,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="2000"&gt;2,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="3000"&gt;3,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="4000"&gt;4,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="5000"&gt;5,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Average Price per Laptop --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-group flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="avgPrice" class="text-gray-600 mb-1"&gt;Avg. Price per Laptop (₹)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;select id="avgPrice" class="rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="50000"&gt;50,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="60000" selected&gt;60,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="75000"&gt;75,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="80000"&gt;80,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="90000"&gt;90,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="100000"&gt;100,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="150000"&gt;150,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="200000"&gt;200,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="250000"&gt;250,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Duration --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-group flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="duration" class="text-gray-600 mb-1"&gt;Duration (Years)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;select id="duration" class="rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="1"&gt;1&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="2"&gt;2&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="3" selected&gt;3&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="4"&gt;4&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="5"&gt;5&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Tax Implications Section (Moved Up) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="col-span-full mt-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-semibold mb-3 text-gray-700"&gt;Tax Implications&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Residual Value Option --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-group flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="residualValueOption" class="text-gray-600 mb-1"&gt;Residual Value Option&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;select id="residualValueOption" class="rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="sell" selected&gt;Sell&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="donate"&gt;Donate&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Residual Value Rate --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-group flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="residualValueRateInput" class="text-gray-600 mb-1 flex items-center"&gt;Residual Value Rate (%)</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="info-icon" data-info="buy-residual-rate"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="number" id="residualValueRateInput" value="10" min="0" max="100" class="rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Corporate Tax Rate --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-group flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="corporateTaxRate" class="text-gray-600 mb-1 flex items-center"&gt;Corporate Tax Rate (%)</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="info-icon" data-info="corporate-tax-rate"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="number" id="corporateTaxRate" value="25.7" min="0" max="100" step="0.1" class="rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Depreciation Years --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-group flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="depreciationYearsInput" class="text-gray-600 mb-1"&gt;Depreciation Period (Years)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="number" id="depreciationYearsInput" value="3" min="1" class="rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Company Discount Rate --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-group flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="discountRate" class="text-gray-600 mb-1 flex items-center"&gt;Company Discount Rate (%)</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="info-icon" data-info="company-discount-rate"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="number" id="discountRate" value="10" min="0" class="rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Impact on Productivity Section (Moved Down) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="col-span-full mt-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-semibold mb-3 text-gray-700"&gt;Impact on Productivity&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Avg. Employee Salary --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-group flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="avgSalary" class="text-gray-600 mb-1"&gt;Avg. Employee Salary/Month (₹)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;select id="avgSalary" class="rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="0"&gt;0&lt;/option&gt; &lt;!-- Added 0 option here --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="25000"&gt;25,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="30000"&gt;30,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="35000"&gt;35,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="40000" selected&gt;40,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="50000"&gt;50,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="75000"&gt;75,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="100000"&gt;1,00,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="150000"&gt;1,50,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="250000"&gt;2,50,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Loss of Productivity --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-group flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="productivityLoss" class="text-gray-600 mb-1"&gt;Loss of Productivity of Employees (%)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;select id="productivityLoss" class="rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="0"&gt;0%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="5"&gt;5%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="10"&gt;10%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="15"&gt;15%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="20" selected&gt;20%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="25"&gt;25%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="30"&gt;30%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="35"&gt;35%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="40"&gt;40%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="45"&gt;45%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="50"&gt;50%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="60"&gt;60%&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Management/Maintenance Cost Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="col-span-full mt-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-semibold mb-3 text-gray-700"&gt;Management/Maintenance Cost&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Laptops per IT Person --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-group flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="laptopsPerIT" class="text-gray-600 mb-1"&gt;# of Laptops managed per IT person&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;select id="laptopsPerIT" class="rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="0"&gt;0&lt;/option&gt; &lt;!-- Added 0 option here --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="50" selected&gt;50&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="100"&gt;100&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="150"&gt;150&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="200"&gt;200&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="250"&gt;250&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="300"&gt;300&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="350"&gt;350&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="400"&gt;400&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="450"&gt;450&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="500"&gt;500&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="550"&gt;550&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="600"&gt;600&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="650"&gt;650&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="700"&gt;700&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="750"&gt;750&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="800"&gt;800&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="850"&gt;850&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="900"&gt;900&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="950"&gt;950&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="1000"&gt;1,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;!-- Cost per IT Person --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-group flex flex-col"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="itCost" class="text-gray-600 mb-1"&gt;Avg. Monthly Salary per IT Person (₹)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;select id="itCost" class="rounded-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="0"&gt;0&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="25000"&gt;25,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="30000"&gt;30,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="35000"&gt;35,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="40000" selected&gt;40,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="50000"&gt;50,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="60000"&gt;60,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="70000"&gt;70,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="80000"&gt;80,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="90000"&gt;90,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option value="100000"&gt;1,00,000&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex flex-wrap justify-center mt-8 space-x-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="calculateButton" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out flex items-center justify-center min-w-[120px] mb-2 sm:mb-0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Calculate</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="resetButton" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out flex items-center justify-center min-w-[120px]"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Reset</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Final Comparison Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="mt-8 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="result-box bg-blue-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-2xl font-bold text-gray-700 mb-4"&gt;Final Comparison&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-lg font-semibold text-gray-600"&gt;Nominal Cash Outflows (Buy):&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p id="nominal-buy-total" class="text-2xl font-extrabold text-blue-700"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-lg font-semibold text-gray-600"&gt;Nominal Cash Outflows (Lease):&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p id="nominal-lease-total" class="text-2xl font-extrabold text-blue-700"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="col-span-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-lg font-semibold text-gray-600"&gt;Nominal Savings When Renting:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p id="nominal-total-savings" class="text-3xl font-extrabold text-green-600"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;hr class="my-6 border-gray-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-lg font-semibold text-gray-600"&gt;Net Cost to Buy (PV):&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p id="final-buy-net-cost" class="text-3xl font-extrabold text-blue-700"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-lg font-semibold text-gray-600"&gt;Net Cost to Lease (PV):&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p id="final-lease-net-cost" class="text-3xl font-extrabold text-blue-700"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="col-span-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-lg font-semibold text-gray-600"&gt;Total Savings When Renting (PV):</p>
+<p class="p1"><span class="Apple-converted-space">                             </span>&lt;span class="info-icon" data-info="total-savings"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p id="total-savings" class="text-4xl font-extrabold text-green-600"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p id="total-savings-percentage" class="text-xl font-semibold text-gray-700 mb-2"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-gray-500 text-sm mt-2"&gt;A negative number indicates a loss by renting compared to buying.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- New Annual Cash Flow Summary Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="mt-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 class="text-2xl font-bold text-gray-700 mb-4 text-center"&gt;Annual Cash Flow Summary&lt;/h3&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Buy Option Annual Cash Flow Table --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card bg-gray-50 mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h4 class="text-xl font-semibold mb-4 text-gray-700"&gt;Buy Option: Annual Cash Flow&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="overflow-x-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;table class="comparison-table w-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;thead id="buy-cashflow-thead"&gt;&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tbody id="buy-cashflow-tbody"&gt;&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Lease Option Annual Cash Flow Table --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card bg-gray-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h4 class="text-xl font-semibold mb-4 text-gray-700"&gt;Lease Option: Annual Cash Flow&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="overflow-x-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;table class="comparison-table w-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;thead id="lease-cashflow-thead"&gt;&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tbody id="lease-cashflow-tbody"&gt;&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Lease vs. Buy Side-by-Side Comparison Table (Moved to the end) --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="mt-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 class="text-2xl font-bold text-gray-700 mb-4 text-center"&gt;Lease vs. Buy Financial Comparison&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card bg-gray-50 mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="overflow-x-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;table class="comparison-table w-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;thead id="side-by-side-thead"&gt;&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tbody id="side-by-side-tbody"&gt;&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- The Modal --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="infoModal" class="modal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="modal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="close-button"&gt;&amp;times;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h4 id="modal-title" class="modal-title"&gt;&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="modal-body" class="text-gray-700 text-sm"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Mapping of data-info attributes to human-readable titles and detailed content</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const infoContent = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'buy-initial-outlay': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Initial Outlay (Year 0)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the total cost to buy all your laptops right away, representing a one-time cash outflow at the beginning of the period.</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;br/&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Formula:</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Initial Outlay = Number of Laptops x Avg. Price per Laptop`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'buy-annual-principal': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Principal Payments (Buy)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This represents the annual principal portion of your loan payments for purchasing the laptops. It reduces the outstanding loan balance.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'buy-annual-interest': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Interest Payments (Buy)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This represents the average annual interest component of your loan payments over the duration. This is only applicable when funding by loan.</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;br/&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Loan Monthly Payment (PMT) Formula:</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>PMT = [P x R x (1+R)^N] / [(1+R)^N - 1]&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Where P = Original Loan Amount, R = loan's monthly interest rate, and N = total number of months.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'buy-tax-interest': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Tax Benefit on Interest (Buy)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the annual tax saving your company receives because the interest paid on the laptop loan is a tax-deductible expense. Calculated as: Annual Interest Paid x Corporate Tax Rate.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'buy-management': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Annual Management Cost',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the average annual nominal cost to manage and support the laptops with your own IT staff over the entire duration. We estimate the number of IT people needed and multiply by their annual cost.</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;br/&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Note: This cost is only applicable for 100 or more laptops.</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;br/&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Formula:</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Annual Management Cost = round up (Number of Laptops / Laptops per IT Person) x Cost per IT Person x 12`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'buy-maintenance': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Annual Maintenance Cost',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the average annual nominal estimated cost for repairs, replacement parts, and other upkeep for your owned laptops. It's a percentage of the original laptop price each year.</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;br/&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Formula:</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Annual Maintenance Cost = Initial Purchase Price x Maintenance Cost Rate`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'productivity-loss-comparison': { // Generic productivity loss for side-by-side</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Annual Productivity Loss',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the estimated annual money your company loses due to employee downtime caused by laptop issues (performance, breakdowns, setup time). For the Buy option, this is generally higher due to internal management. For the Lease option, it's typically lower due to external support and quicker replacements.</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;br/&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Formula:</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Annual Productivity Loss = Number of Laptops x Avg. Employee Salary x 12 x Loss of Productivity Rate`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'buy-depreciation-amount': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Depreciation as per IT Act (Buy)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the annual non-cash expense that reduces the value of the owned laptops over their useful life, as allowed by tax regulations (IT Act). This amount is used to calculate tax benefits.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'buy-depreciation': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Tax Benefit on Depreciation (Buy)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the average annual nominal tax benefit you receive because the value of your purchased laptops decreases over time (depreciation). This annual depreciation amount is tax-deductible.</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;br/&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Formula:</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Annual Tax Savings = (Annual Depreciation Amount) x Corporate Tax Rate`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'buy-residual': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Residual Value (Year End)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the estimated amount of money you could get back by selling the laptops at the end of the chosen period. If you choose to **donate** the laptops, this value will be zero.</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;br/&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Formula (if selling):</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Residual Value = Initial Purchase Price x Residual Value Rate`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'buy-residual-rate': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Residual Value Rate',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the estimated percentage of the initial purchase price that you expect to recover by selling the laptops at the end of their useful life or the chosen duration. A higher rate means you expect to sell them for more. This is only applicable if you select the "Sell" option for residual value.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'lease-cost': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Annual Lease Rent',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the average annual nominal cost you pay to rent the laptops for the entire duration. This single cost often covers the management and maintenance.</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;br/&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Formula:</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Annual Renting Cost = Initial Purchase Price x Lease Rate`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'lease-tax-benefit': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Tax Benefit on Lease Rent',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the annual tax saving your company receives because lease payments are typically 100% tax-deductible business expenses. Calculated as: Annual Lease Rent x Corporate Tax Rate.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'total-savings': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Total Savings When Renting (PV)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the final comparison, representing the difference between the Net Present Cost (PV) of buying and the Net Present Cost (PV) of renting. If this number is positive, you save money by renting. If it's negative, it means renting would actually cost you more. All values are in today's money.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'corporate-tax-rate': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Corporate Tax Rate',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the percentage of your company's profits that must be paid as tax to the government. This rate affects how much your tax savings from expenses like depreciation or lease payments are worth.</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;br/&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>*Standard Rates in India:*</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>For domestic companies, a common base rate is 22% (if not opting for certain deductions). It can vary, with some companies potentially paying 25% or 30% depending on turnover and other factors. The default of 25.7% is a common effective rate.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'company-discount-rate': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Company Discount Rate',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This rate helps you understand the "time value of money" – meaning a rupee today is generally worth more than a rupee in the future. It reflects what your company could earn by investing money elsewhere, or the cost of borrowing capital. A higher discount rate means future money is worth less to you today.</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;br/&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>*Typical Range in India:*</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>While there's no single "standard" rate as it's company-specific, for many businesses, this rate often falls in the range of 10% to 15%, depending on their cost of capital and risk profile.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// New entries for the side-by-side comparison table totals</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'total-outflows-nominal': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Total Outflows (Nominal)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the sum of all money leaving your company for this option over the entire duration, without accounting for the time value of money.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'total-outflows-pv': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Total Outflows (PV)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the sum of the Present Values of all money leaving your company for this option over the entire duration. It's the total cost in today's money.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'total-inflows-nominal': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Total Inflows / Tax Benefits (Nominal)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the sum of all money coming into your company or tax savings received for this option over the entire duration, without accounting for the time value of money.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'total-inflows-pv': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Total Inflows / Tax Benefits (PV)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the sum of the Present Values of all money coming into your company or tax savings received for this option over the entire duration. It's the total benefit in today's money.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'net-cost-nominal': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Net Cost (Nominal)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the total nominal outflows minus total nominal inflows/tax benefits for this option.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'net-cost-pv': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>title: 'Net Cost (PV)',</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>body: `This is the total Present Value outflows minus total Present Value inflows/tax benefits for this option. This is the most accurate measure of the true cost.`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const inputs = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>modeOfFinance: document.getElementById('modeOfFinance'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>numLaptops: document.getElementById('numLaptops'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>avgPrice: document.getElementById('avgPrice'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>duration: document.getElementById('duration'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>interestRate: document.getElementById('interestRate'), // Loan interest rate / Equity cost</p>
+<p class="p1"><span class="Apple-converted-space">                </span>residualValueOption: document.getElementById('residualValueOption'), // New input for donate/sell</p>
+<p class="p1"><span class="Apple-converted-space">                </span>residualValueRateInput: document.getElementById('residualValueRateInput'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>corporateTaxRate: document.getElementById('corporateTaxRate'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>depreciationYearsInput: document.getElementById('depreciationYearsInput'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>discountRate: document.getElementById('discountRate'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>avgSalary: document.getElementById('avgSalary'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>productivityLoss: document.getElementById('productivityLoss'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>laptopsPerIT: document.getElementById('laptopsPerIT'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>itCost: document.getElementById('itCost')</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const outputs = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>nominalBuyTotal: document.getElementById('nominal-buy-total'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>nominalLeaseTotal: document.getElementById('nominal-lease-total'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>nominalTotalSavings: document.getElementById('nominal-total-savings'),</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>totalSavings: document.getElementById('total-savings'), // Still PV</p>
+<p class="p1"><span class="Apple-converted-space">                </span>totalSavingsPercentage: document.getElementById('total-savings-percentage'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>finalBuyNetCost: document.getElementById('final-buy-net-cost'), // For comparison display</p>
+<p class="p1"><span class="Apple-converted-space">                </span>finalLeaseNetCost: document.getElementById('final-lease-net-cost'), // For comparison display</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>buyCashflowThead: document.getElementById('buy-cashflow-thead'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>buyCashflowTbody: document.getElementById('buy-cashflow-tbody'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>leaseCashflowThead: document.getElementById('lease-cashflow-thead'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>leaseCashflowTbody: document.getElementById('lease-cashflow-tbody'),</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>sideBySideThead: document.getElementById('side-by-side-thead'),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>sideBySideTbody: document.getElementById('side-by-side-tbody')</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Constants</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const maintenanceCostRate = 0.15; // 15%</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const leaseRate = 0.04 * 12;<span class="Apple-converted-space">      </span>// 48% (based on 4% monthly)</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const depreciationRate = 0.33;<span class="Apple-converted-space">    </span>// 33% per year for 3 years, assuming straight-line</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const leaseProductivityLossRate = 0.05; // 5% max as requested</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Store initial values for reset</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const initialInputValues = {};</p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (const key in inputs) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const element = inputs[key];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (element) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>initialInputValues[key] = element.value !== undefined ? element.value : element.getAttribute('value') || '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>initialInputValues[key] = ''; // Handle cases where element might be null</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>function formatCurrency(amount) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (amount === null || isNaN(amount)) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>return '₹0';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Handle negative values by putting the minus sign outside the rupee symbol</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const isNegative = amount &lt; 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const absoluteAmount = Math.abs(amount);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const formatted = `₹${absoluteAmount.toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return isNegative ? `- ${formatted}` : formatted;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Function to calculate Present Value of a single future amount</p>
+<p class="p1"><span class="Apple-converted-space">            </span>function calculatePVSingleAmount(rate, numPeriods, futureValue) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (futureValue === 0) return 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (numPeriods === 0) return futureValue;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (rate === 0) return futureValue; // If rate is 0, PV is FV</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return futureValue / Math.pow(1 + rate, numPeriods);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// --- Core Calculation Logic ---</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let globalCalculatedValues = {}; // Store results for summary generation</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>function calculate() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Get values from inputs robustly</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const modeOfFinance = inputs.modeOfFinance?.value || 'equity';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const numLaptops = parseFloat(inputs.numLaptops?.value || '0');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const avgPrice = parseFloat(inputs.avgPrice?.value || '0');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const durationYears = parseFloat(inputs.duration?.value || '0');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const interestRateInput = parseFloat(inputs.interestRate?.value || '0') / 100; // This is now Loan Interest OR Equity Cost</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const residualValueOption = inputs.residualValueOption?.value || 'sell'; // Get residual value option</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const avgSalary = parseFloat(inputs.avgSalary?.value || '0'); // Monthly salary</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const buyProductivityLossRate = parseFloat(inputs.productivityLoss?.value || '0') / 100;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const laptopsPerIT = parseFloat(inputs.laptopsPerIT?.value || '0');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const itCost = parseFloat(inputs.itCost?.value || '0'); // Monthly IT cost per person</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const residualValueRate = parseFloat(inputs.residualValueRateInput?.value || inputs.residualValueRateInput?.getAttribute('value') || '0') / 100;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const corporateTaxRate = parseFloat(inputs.corporateTaxRate?.value || '0') / 100;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const depreciationYearsInput = parseFloat(inputs.depreciationYearsInput?.value || '0');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const annualDiscountRate = parseFloat(inputs.discountRate?.value || '0') / 100; // Company discount rate (annual)</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Ensure duration is at least 1 for array indexing, as select options start from 1</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const actualDurationYears = Math.max(1, durationYears);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- BUY OPTION CALCULATIONS (NOMINAL ANNUAL CASH FLOWS) ---</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const initialPurchasePrice = numLaptops * avgPrice;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Initial Outlay (Year 0)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let nominalBuyInitialOutlay = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (modeOfFinance === 'equity') {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>nominalBuyInitialOutlay = initialPurchasePrice;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Loan Payments (if modeOfFinance is 'loan')</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let annualLoanPrincipalPayments = Array(actualDurationYears).fill(0);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let annualLoanInterestPayments = Array(actualDurationYears).fill(0);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (modeOfFinance === 'loan' &amp;&amp; initialPurchasePrice &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const durationMonths = actualDurationYears * 12;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const loanMonthlyRate = interestRateInput / 12; // Use interestRateInput as loan interest</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>let remainingBalance = initialPurchasePrice;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (loanMonthlyRate === 0) { // Handle 0 interest rate for monthly payment calculation</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const monthlyPrincipal = initialPurchasePrice / durationMonths;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>for (let year = 0; year &lt; actualDurationYears; year++) {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>annualLoanPrincipalPayments[year] = monthlyPrincipal * 12;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const monthlyPayment = initialPurchasePrice * loanMonthlyRate / (1 - Math.pow(1 + loanMonthlyRate, -durationMonths));</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>for (let month = 0; month &lt; durationMonths; month++) {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>const interestThisMonth = remainingBalance * loanMonthlyRate;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>const principalThisMonth = monthlyPayment - interestThisMonth;</p>
+<p class="p2"><span class="Apple-converted-space">                            </span></p>
+<p class="p1"><span class="Apple-converted-space">                            </span>const yearIndex = Math.floor(month / 12);</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (yearIndex &lt; actualDurationYears) {</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>annualLoanPrincipalPayments[yearIndex] += principalThisMonth;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>annualLoanInterestPayments[yearIndex] += interestThisMonth;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>remainingBalance -= principalThisMonth;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Management Cost (Nominal Annual)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let annualNominalManagementCost = Array(actualDurationYears).fill(0);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (numLaptops &gt;= 100 &amp;&amp; laptopsPerIT &gt; 0) { // Only apply for 100 or more laptops and if IT person manages at least 1 laptop</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const monthlyManagementCostPerPerson = itCost;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const totalITManagers = Math.ceil(numLaptops / laptopsPerIT);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const costPerYear = totalITManagers * monthlyManagementCostPerPerson * 12;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>for(let year = 0; year &lt; actualDurationYears; year++) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>annualNominalManagementCost[year] = costPerYear;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Maintenance Cost (Nominal Annual)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let annualNominalMaintenanceCost = Array(actualDurationYears).fill(0);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (numLaptops &gt; 1) { // Apply maintenance cost only if more than 1 laptop</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const costPerYear = initialPurchasePrice * maintenanceCostRate;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>for(let year = 0; year &lt; actualDurationYears; year++) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>annualNominalMaintenanceCost[year] = costPerYear;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Productivity Loss (Buy) (Nominal Annual)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let annualNominalBuyProductivityLoss = Array(actualDurationYears).fill(0);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const costPerYearProdLossBuy = numLaptops * avgSalary * buyProductivityLossRate * 12;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>for(let year = 0; year &lt; actualDurationYears; year++) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>annualNominalBuyProductivityLoss[year] = costPerYearProdLossBuy;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Depreciation Amount (Nominal Annual)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const actualDepreciationYears = Math.min(actualDurationYears, depreciationYearsInput);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let annualNominalDepreciationAmount = Array(actualDurationYears).fill(0);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (actualDepreciationYears &gt; 0 &amp;&amp; initialPurchasePrice &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const depreciationPerYear = initialPurchasePrice / depreciationYearsInput; // Straight-line depreciation</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>for(let year = 0; year &lt; actualDepreciationYears; year++) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>annualNominalDepreciationAmount[year] = depreciationPerYear;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Tax Benefit on Depreciation (Nominal Annual)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let annualNominalDepreciationBenefit = Array(actualDurationYears).fill(0);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>for(let year = 0; year &lt; actualDepreciationYears; year++) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>annualNominalDepreciationBenefit[year] = annualNominalDepreciationAmount[year] * corporateTaxRate;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Residual Value (Nominal - only in the last year)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let nominalResidualValue = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (residualValueOption === 'sell' &amp;&amp; actualDurationYears &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>nominalResidualValue = initialPurchasePrice * residualValueRate;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// If 'donate', nominalResidualValue remains 0, as initialized.</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- LEASE OPTION CALCULATIONS (NOMINAL ANNUAL CASH FLOWS) ---</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Renting Cost (Nominal Annual)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let annualNominalRentingCost = Array(actualDurationYears).fill(0);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const costPerYearRenting = initialPurchasePrice * leaseRate;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>for(let year = 0; year &lt; actualDurationYears; year++) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>annualNominalRentingCost[year] = costPerYearRenting;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Management &amp; Maintenance Cost (Lease) is ₹0 (Nominal Annual)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const annualNominalLeaseMgmtMaint = Array(actualDurationYears).fill(0); // Always 0</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Productivity Loss (Lease) (Nominal Annual) - Modified: 0 if buy productivity loss is 0</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let annualNominalLeaseProductivityLoss = Array(actualDurationYears).fill(0);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (buyProductivityLossRate &gt; 0) { // Only calculate if buy productivity loss is not 0</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const costPerYearProdLossLease = numLaptops * avgSalary * leaseProductivityLossRate * 12;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>for(let year = 0; year &lt; actualDurationYears; year++) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>annualNominalLeaseProductivityLoss[year] = costPerYearProdLossLease;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Tax Savings (100% Deduction) (Nominal Annual)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let annualNominalLeaseTaxBenefit = Array(actualDurationYears).fill(0);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const benefitPerYearLeaseTax = (initialPurchasePrice * leaseRate) * corporateTaxRate;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>for(let year = 0; year &lt; actualDurationYears; year++) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>annualNominalLeaseTaxBenefit[year] = benefitPerYearLeaseTax;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- GENERATE ANNUAL CASH FLOW TABLES ---</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Helper function to create table row, returning both HTML and the NPV of its nominal cash flow stream</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const createCashFlowRow = (label, nominalAnnualValues, discountRate, isSubtotal = false, isOverallTotal = false, infoKey = null) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>let rowHtml = `&lt;tr class="${isOverallTotal ? 'total-row' : (isSubtotal ? 'subtotal-row' : '')}"&gt;&lt;td&gt;${label}${infoKey ? `&lt;span class="info-icon" data-info="${infoKey}"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;` : ''}&lt;/td&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>let rowNPV = 0; // NPV for this specific row's stream</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>for (let year = 0; year &lt;= actualDurationYears; year++) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const nominal = nominalAnnualValues[year] !== undefined ? nominalAnnualValues[year] : 0;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>rowHtml += `&lt;td&gt;${formatCurrency(nominal)}&lt;/td&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>// Only add to NPV if it's within the duration period</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>rowNPV += calculatePVSingleAmount(discountRate, year, nominal);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>rowHtml += `&lt;td&gt;${formatCurrency(rowNPV)}&lt;/td&gt;`; // NPV of this particular cash flow stream</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>rowHtml += '&lt;/tr&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>return { html: rowHtml, npv: rowNPV };</p>
+<p class="p1"><span class="Apple-converted-space">                </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Generate table headers (Year 0, Year 1, ..., Year N, NPV of Annual Cash Flow)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let headerHtml = '&lt;tr&gt;&lt;th&gt;Cost Head&lt;/th&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>for (let year = 0; year &lt;= actualDurationYears; year++) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>headerHtml += `&lt;th&gt;Year ${year}&lt;/th&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>headerHtml += `&lt;th&gt;NPV of Annual Cash Flow&lt;/th&gt;&lt;/tr&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- Buy Option Table ---</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (outputs.buyCashflowThead) outputs.buyCashflowThead.innerHTML = headerHtml;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let buyTbodyHtml = '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let accumulatedBuyNPV = 0;<span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- BUY: OUTFLOWS ---</p>
+<p class="p1"><span class="Apple-converted-space">                </span>buyTbodyHtml += `&lt;tr&gt;&lt;td colspan="${actualDurationYears + 2}" class="text-left font-bold py-2 px-4 bg-gray-200"&gt;OUTFLOWS&lt;/td&gt;&lt;/tr&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Initial Outlay (Year 0)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const initialOutlayRow = createCashFlowRow('Initial Outlay', [nominalBuyInitialOutlay, ...Array(actualDurationYears).fill(0)], annualDiscountRate, false, false, 'buy-initial-outlay');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>buyTbodyHtml += initialOutlayRow.html;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>accumulatedBuyNPV += initialOutlayRow.npv;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (modeOfFinance === 'loan') {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>// Loan Principal Payments</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const principalRow = createCashFlowRow('Principal Payments', [0, ...annualLoanPrincipalPayments], annualDiscountRate, false, false, 'buy-annual-principal');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>buyTbodyHtml += principalRow.html;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>accumulatedBuyNPV += principalRow.npv;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>// Loan Interest Payments</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const interestRow = createCashFlowRow('Interest Payments', [0, ...annualLoanInterestPayments], annualDiscountRate, false, false, 'buy-annual-interest');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>buyTbodyHtml += interestRow.html;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>accumulatedBuyNPV += interestRow.npv;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Management Cost</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const mgmtCostRow = createCashFlowRow('Annual Management Cost', [0, ...annualNominalManagementCost], annualDiscountRate, false, false, 'buy-management');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>buyTbodyHtml += mgmtCostRow.html;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>accumulatedBuyNPV += mgmtCostRow.npv;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Maintenance Cost</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const maintCostRow = createCashFlowRow('Annual Maintenance Cost', [0, ...annualNominalMaintenanceCost], annualDiscountRate, false, false, 'buy-maintenance');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>buyTbodyHtml += maintCostRow.html;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>accumulatedBuyNPV += maintCostRow.npv;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Productivity Loss</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const prodLossBuyRow = createCashFlowRow('Annual Productivity Loss', [0, ...annualNominalBuyProductivityLoss], annualDiscountRate, false, false, 'productivity-loss-comparison'); // Using generic for now</p>
+<p class="p1"><span class="Apple-converted-space">                </span>buyTbodyHtml += prodLossBuyRow.html;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>accumulatedBuyNPV += prodLossBuyRow.npv;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- BUY: INFLOWS / TAX BENEFITS ---</p>
+<p class="p1"><span class="Apple-converted-space">                </span>buyTbodyHtml += `&lt;tr&gt;&lt;td colspan="${actualDurationYears + 2}" class="text-left font-bold py-2 px-4 bg-gray-200 mt-4"&gt;INFLOWS / TAX BENEFITS&lt;/td&gt;&lt;/tr&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (modeOfFinance === 'loan') {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>// Tax Benefit on Interest (Negative outflow = inflow/benefit)</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const taxBenefitInterestRow = createCashFlowRow('Tax Benefit on Interest', [0, ...annualLoanInterestPayments.map(val =&gt; -val * corporateTaxRate)], annualDiscountRate, false, false, 'buy-tax-interest');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>buyTbodyHtml += taxBenefitInterestRow.html;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>accumulatedBuyNPV += taxBenefitInterestRow.npv;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Tax Benefit on Depreciation (Negative outflow = inflow/benefit)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const depreciationBenefitRow = createCashFlowRow('Tax Benefit on Depreciation', [0, ...annualNominalDepreciationBenefit.map(val =&gt; -val)], annualDiscountRate, false, false, 'buy-depreciation');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>buyTbodyHtml += depreciationBenefitRow.html;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>accumulatedBuyNPV += depreciationBenefitRow.npv;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Residual Value (Negative outflow = inflow/benefit)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const residualValueRow = createCashFlowRow('Residual Value', [...Array(actualDurationYears).fill(0), -nominalResidualValue], annualDiscountRate, false, false, 'buy-residual');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>buyTbodyHtml += residualValueRow.html;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>accumulatedBuyNPV += residualValueRow.npv;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- BUY: TOTALS ---</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Total nominal for each year by summing up all line items</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let buyTotalNominalCashFlows = Array(actualDurationYears + 1).fill(0);</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Year 0</p>
+<p class="p1"><span class="Apple-converted-space">                </span>buyTotalNominalCashFlows[0] += nominalBuyInitialOutlay;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Years 1 to actualDurationYears</p>
+<p class="p1"><span class="Apple-converted-space">                </span>for (let year = 1; year &lt;= actualDurationYears; year++) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>let yearTotal = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (modeOfFinance === 'loan') {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>yearTotal += (annualLoanPrincipalPayments[year-1] || 0);</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>yearTotal += (annualLoanInterestPayments[year-1] || 0);</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>yearTotal += (annualLoanInterestPayments[year-1] || 0) * (-corporateTaxRate); // Tax benefit on interest</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>yearTotal += (annualNominalManagementCost[year-1] || 0);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>yearTotal += (annualNominalMaintenanceCost[year-1] || 0);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>yearTotal += (annualNominalBuyProductivityLoss[year-1] || 0);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>yearTotal += (annualNominalDepreciationBenefit[year-1] || 0) * (-1); // Tax benefit on depreciation (negative outflow is inflow)</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (year === actualDurationYears) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>yearTotal += (-nominalResidualValue); // Residual value as inflow (negative outflow is inflow)</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>buyTotalNominalCashFlows[year] = yearTotal;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const totalBuyCashOutflowRow = createCashFlowRow('&lt;b&gt;Total Cash Flow (Nominal)&lt;/b&gt;', buyTotalNominalCashFlows, annualDiscountRate, true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>buyTbodyHtml += totalBuyCashOutflowRow.html;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const overallBuyNPVFinalRow = `&lt;tr class="total-row"&gt;&lt;td&gt;&lt;b&gt;Net Present Value (NPV)&lt;/b&gt;&lt;/td&gt;&lt;td colspan="${actualDurationYears + 1}"&gt;${formatCurrency(accumulatedBuyNPV)}&lt;/td&gt;&lt;td&gt;${formatCurrency(accumulatedBuyNPV)}&lt;/td&gt;&lt;/tr&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>buyTbodyHtml += overallBuyNPVFinalRow;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (outputs.buyCashflowTbody) outputs.buyCashflowTbody.innerHTML = buyTbodyHtml;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- Lease Option Table ---</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (outputs.leaseCashflowThead) outputs.leaseCashflowThead.innerHTML = headerHtml;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let leaseTbodyHtml = '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let accumulatedLeaseNPV = 0;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- LEASE: OUTFLOWS ---</p>
+<p class="p1"><span class="Apple-converted-space">                </span>leaseTbodyHtml += `&lt;tr&gt;&lt;td colspan="${actualDurationYears + 2}" class="text-left font-bold py-2 px-4 bg-gray-200"&gt;OUTFLOWS&lt;/td&gt;&lt;/tr&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Renting Cost</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const rentingCostRow = createCashFlowRow('Annual Lease Rent', [0, ...annualNominalRentingCost], annualDiscountRate, false, false, 'lease-cost');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>leaseTbodyHtml += rentingCostRow.html;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>accumulatedLeaseNPV += rentingCostRow.npv;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Productivity Loss (Lease)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const prodLossLeaseRow = createCashFlowRow('Annual Productivity Loss', [0, ...annualNominalLeaseProductivityLoss], annualDiscountRate, false, false, 'productivity-loss-comparison'); // Using generic for now</p>
+<p class="p1"><span class="Apple-converted-space">                </span>leaseTbodyHtml += prodLossLeaseRow.html;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>accumulatedLeaseNPV += prodLossLeaseRow.npv;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- LEASE: INFLOWS / TAX BENEFITS ---</p>
+<p class="p1"><span class="Apple-converted-space">                </span>leaseTbodyHtml += `&lt;tr&gt;&lt;td colspan="${actualDurationYears + 2}" class="text-left font-bold py-2 px-4 bg-gray-200 mt-4"&gt;INFLOWS / TAX BENEFITS&lt;/td&gt;&lt;/tr&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Tax Benefit on Lease Rent</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const taxBenefitLeaseRow = createCashFlowRow('Tax Benefit on Lease Rent', [0, ...annualNominalLeaseTaxBenefit.map(val =&gt; -val)], annualDiscountRate, false, false, 'lease-tax-benefit');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>leaseTbodyHtml += taxBenefitLeaseRow.html;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>accumulatedLeaseNPV += taxBenefitLeaseRow.npv;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- LEASE: TOTALS ---</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let leaseTotalNominalCashFlows = Array(actualDurationYears + 1).fill(0);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Year 0 (Lease typically has no Year 0 outflow for rent/mgmt/maint/prod loss)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>leaseTotalNominalCashFlows[0] = 0; // Explicitly set if no initial payment for lease is assumed</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Years 1 to actualDurationYears</p>
+<p class="p1"><span class="Apple-converted-space">                </span>for (let year = 1; year &lt;= actualDurationYears; year++) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>let yearTotal = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>yearTotal += (annualNominalRentingCost[year-1] || 0);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>yearTotal += (annualNominalLeaseProductivityLoss[year-1] || 0);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>yearTotal += (annualNominalLeaseTaxBenefit[year-1] || 0) * (-1); // Tax benefit as inflow</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>leaseTotalNominalCashFlows[year] = yearTotal;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const totalLeaseCashOutflowRow = createCashFlowRow('&lt;b&gt;Total Cash Flow (Nominal)&lt;/b&gt;', leaseTotalNominalCashFlows, annualDiscountRate, true);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>leaseTbodyHtml += totalLeaseCashOutflowRow.html;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const overallLeaseNPVFinalRow = `&lt;tr class="total-row"&gt;&lt;td&gt;&lt;b&gt;Net Present Value (NPV)&lt;/b&gt;&lt;/td&gt;&lt;td colspan="${actualDurationYears + 1}"&gt;${formatCurrency(accumulatedLeaseNPV)}&lt;/td&gt;&lt;td&gt;${formatCurrency(accumulatedLeaseNPV)}&lt;/td&gt;&lt;/tr&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>leaseTbodyHtml += overallLeaseNPVFinalRow;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (outputs.leaseCashflowTbody) outputs.leaseCashflowTbody.innerHTML = leaseTbodyHtml;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Make sure globalCalculatedValues reflect the accumulated NPVs.</p>
+<p class="p1"><span class="Apple-converted-space">                </span>globalCalculatedValues.buyNetCostPV = accumulatedBuyNPV;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>globalCalculatedValues.leaseNetCostPV = accumulatedLeaseNPV;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- CALCULATE TOTAL NOMINAL OUTFLOWS (FROM SUM OF ANNUAL CASH FLOWS) ---</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Sum all nominal cash flows including Year 0</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let calculatedTotalNominalBuyOutflow = buyTotalNominalCashFlows.reduce((sum, val) =&gt; sum + val, 0);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let calculatedTotalNominalLeaseOutflow = leaseTotalNominalCashFlows.reduce((sum, val) =&gt; sum + val, 0);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let calculatedNominalSavings = calculatedTotalNominalBuyOutflow - calculatedTotalNominalLeaseOutflow;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Update globalCalculatedValues with these consistent nominal totals</p>
+<p class="p1"><span class="Apple-converted-space">                </span>globalCalculatedValues.totalNominalBuyOutflow = calculatedTotalNominalBuyOutflow;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>globalCalculatedValues.totalNominalLeaseOutflow = calculatedTotalNominalLeaseOutflow;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>globalCalculatedValues.nominalSavings = calculatedNominalSavings;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- FINAL COMPARISON (PRESENT VALUES) ---</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const totalSavingsPV = globalCalculatedValues.buyNetCostPV - globalCalculatedValues.leaseNetCostPV;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const totalSavingsPercentage = (globalCalculatedValues.buyNetCostPV === 0) ? 0 : (totalSavingsPV / globalCalculatedValues.buyNetCostPV) * 100;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>globalCalculatedValues.totalSavingsPV = totalSavingsPV;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>globalCalculatedValues.totalSavingsPercentage = totalSavingsPercentage;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- CONSOLE LOGGING FOR DEBUGGING ---</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log("--- Final Comparison Calculated Values ---");</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log(" <span class="Apple-converted-space">  </span>Nominal Buy Total Outflow:", globalCalculatedValues.totalNominalBuyOutflow);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log(" <span class="Apple-converted-space">  </span>Nominal Lease Total Outflow:", globalCalculatedValues.totalNominalLeaseOutflow);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log(" <span class="Apple-converted-space">  </span>Nominal Savings:", globalCalculatedValues.nominalSavings);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log(" <span class="Apple-converted-space">  </span>Net Cost to Buy (PV):", globalCalculatedValues.buyNetCostPV);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log(" <span class="Apple-converted-space">  </span>Net Cost to Lease (PV):", globalCalculatedValues.leaseNetCostPV);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log(" <span class="Apple-converted-space">  </span>Total Savings When Renting (PV):", globalCalculatedValues.totalSavingsPV);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log(" <span class="Apple-converted-space">  </span>Total Savings Percentage:", totalSavingsPercentage);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log("---------------------------------------");</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- DISPLAY RESULTS IN MAIN SECTIONS (NOMINAL ANNUAL &amp; PV) ---</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Defensive checks and assignments for nominal outputs</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (outputs.nominalBuyTotal) outputs.nominalBuyTotal.textContent = formatCurrency(globalCalculatedValues.totalNominalBuyOutflow);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (outputs.nominalLeaseTotal) outputs.nominalLeaseTotal.textContent = formatCurrency(globalCalculatedValues.totalNominalLeaseOutflow);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (outputs.nominalTotalSavings) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>outputs.nominalTotalSavings.textContent = formatCurrency(globalCalculatedValues.nominalSavings);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (globalCalculatedValues.nominalSavings &gt;= 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>outputs.nominalTotalSavings.classList.remove('text-red-600');</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>outputs.nominalTotalSavings.classList.add('text-green-600');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>outputs.nominalTotalSavings.classList.remove('text-green-600');</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>outputs.nominalTotalSavings.classList.add('text-red-600');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Defensive checks and assignments for PV outputs</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (outputs.finalBuyNetCost) outputs.finalBuyNetCost.textContent = formatCurrency(globalCalculatedValues.buyNetCostPV);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (outputs.finalLeaseNetCost) outputs.finalLeaseNetCost.textContent = formatCurrency(globalCalculatedValues.leaseNetCostPV);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (outputs.totalSavings) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>outputs.totalSavings.textContent = formatCurrency(globalCalculatedValues.totalSavingsPV);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (globalCalculatedValues.totalSavingsPV &gt;= 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>outputs.totalSavings.classList.remove('text-red-600');</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>outputs.totalSavings.classList.add('text-green-600');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>outputs.totalSavings.classList.remove('text-green-600');</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>outputs.totalSavings.classList.add('text-red-600');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (outputs.totalSavingsPercentage) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>outputs.totalSavingsPercentage.textContent = `You ${globalCalculatedValues.totalSavingsPV &gt;= 0 ? 'save' : 'incur a loss of'} ${Math.abs(globalCalculatedValues.totalSavingsPercentage).toFixed(2)}% of the buy cost!`;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (globalCalculatedValues.totalSavingsPV &gt;= 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>outputs.totalSavingsPercentage.classList.remove('text-red-700');</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>outputs.totalSavingsPercentage.classList.add('text-green-700');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>outputs.totalSavingsPercentage.classList.remove('text-green-700');</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>outputs.totalSavingsPercentage.classList.add('text-red-700');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// --- GENERATE SIDE-BY-SIDE COMPARISON TABLE ---</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const c = globalCalculatedValues; // Shorthand for calculated values</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>let sideBySideTheadHtml = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Cost Head&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Buy Option (Nominal)&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Buy Option (PV)&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Lease Option (Nominal)&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;th&gt;Lease Option (PV)&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (outputs.sideBySideThead) outputs.sideBySideThead.innerHTML = sideBySideTheadHtml;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>let sideBySideTbodyHtml = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;&lt;td colspan="5" class="text-left font-bold py-2 px-4 bg-gray-200"&gt;OUTFLOWS&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;Initial Outlay &lt;span class="info-icon" data-info="buy-initial-outlay"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(nominalBuyInitialOutlay)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(calculatePVSingleAmount(annualDiscountRate, 0, nominalBuyInitialOutlay))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (modeOfFinance === 'loan') {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>// Calculate PV of principal and interest payments separately for the side-by-side table</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>let pvPrincipalPayments = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>let pvInterestPayments = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>let currentLoanBalance = initialPurchasePrice;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const loanMonthlyRate = interestRateInput / 12;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const durationMonths = actualDurationYears * 12;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (loanMonthlyRate === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const monthlyPrincipal = initialPurchasePrice / durationMonths;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>for (let month = 0; month &lt; durationMonths; month++) {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>pvPrincipalPayments += calculatePVSingleAmount(annualDiscountRate / 12, month + 1, monthlyPrincipal);</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const monthlyPayment = initialPurchasePrice * loanMonthlyRate / (1 - Math.pow(1 + loanMonthlyRate, -durationMonths));</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>for (let month = 0; month &lt; durationMonths; month++) {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>const interestThisMonth = currentLoanBalance * loanMonthlyRate;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>const principalThisMonth = monthlyPayment - interestThisMonth;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>pvPrincipalPayments += calculatePVSingleAmount(annualDiscountRate / 12, month + 1, principalThisMonth);</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>pvInterestPayments += calculatePVSingleAmount(annualDiscountRate / 12, month + 1, interestThisMonth);</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>currentLoanBalance -= principalThisMonth;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>sideBySideTbodyHtml += `</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;Principal Payments &lt;span class="info-icon" data-info="buy-annual-principal"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${formatCurrency(annualLoanPrincipalPayments.reduce((sum, val) =&gt; sum + val, 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${formatCurrency(pvPrincipalPayments)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;Interest Payments &lt;span class="info-icon" data-info="buy-annual-interest"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${formatCurrency(annualLoanInterestPayments.reduce((sum, val) =&gt; sum + val, 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${formatCurrency(pvInterestPayments)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>sideBySideTbodyHtml += `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;Annual Management Cost &lt;span class="info-icon" data-info="buy-management"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(annualNominalManagementCost.reduce((sum, val) =&gt; sum + val, 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(annualNominalManagementCost.reduce((sum, val, idx) =&gt; sum + calculatePVSingleAmount(annualDiscountRate, idx + 1, val), 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;Annual Maintenance Cost &lt;span class="info-icon" data-info="buy-maintenance"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(annualNominalMaintenanceCost.reduce((sum, val) =&gt; sum + val, 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(annualNominalMaintenanceCost.reduce((sum, val, idx) =&gt; sum + calculatePVSingleAmount(annualDiscountRate, idx + 1, val), 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;Annual Productivity Loss &lt;span class="info-icon" data-info="productivity-loss-comparison"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(annualNominalBuyProductivityLoss.reduce((sum, val) =&gt; sum + val, 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(annualNominalBuyProductivityLoss.reduce((sum, val, idx) =&gt; sum + calculatePVSingleAmount(annualDiscountRate, idx + 1, val), 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(annualNominalLeaseProductivityLoss.reduce((sum, val) =&gt; sum + val, 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(annualNominalLeaseProductivityLoss.reduce((sum, val, idx) =&gt; sum + calculatePVSingleAmount(annualDiscountRate, idx + 1, val), 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;Annual Lease Rent &lt;span class="info-icon" data-info="lease-cost"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(annualNominalRentingCost.reduce((sum, val) =&gt; sum + val, 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(annualNominalRentingCost.reduce((sum, val, idx) =&gt; sum + calculatePVSingleAmount(annualDiscountRate, idx + 1, val), 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr class="subtotal-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;Total Outflows (Nominal)&lt;/b&gt; &lt;span class="info-icon" data-info="total-outflows-nominal"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;${formatCurrency(calculatedTotalNominalBuyOutflow + nominalResidualValue)}&lt;/b&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;${formatCurrency(accumulatedBuyNPV + calculatePVSingleAmount(annualDiscountRate, actualDurationYears, nominalResidualValue))}&lt;/b&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;${formatCurrency(calculatedTotalNominalLeaseOutflow + annualNominalLeaseTaxBenefit.reduce((sum, val) =&gt; sum + val, 0))}&lt;/b&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;${formatCurrency(accumulatedLeaseNPV + annualNominalLeaseTaxBenefit.reduce((sum, val, idx) =&gt; sum + calculatePVSingleAmount(annualDiscountRate, idx + 1, val), 0))}&lt;/b&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;&lt;td colspan="5"&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;&lt;td colspan="5" class="text-left font-bold py-2 px-4 bg-gray-200"&gt;INFLOWS / TAX BENEFITS&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (modeOfFinance === 'loan') {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>sideBySideTbodyHtml += `</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;Tax Benefit on Interest &lt;span class="info-icon" data-info="buy-tax-interest"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${formatCurrency(annualLoanInterestPayments.reduce((sum, val) =&gt; sum + val, 0) * corporateTaxRate)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${formatCurrency(annualLoanInterestPayments.reduce((sum, val, idx) =&gt; sum + calculatePVSingleAmount(annualDiscountRate, idx + 1, val * corporateTaxRate), 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>sideBySideTbodyHtml += `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;Tax Benefit on Depreciation &lt;span class="info-icon" data-info="buy-depreciation"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(annualNominalDepreciationBenefit.reduce((sum, val) =&gt; sum + val, 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(annualNominalDepreciationBenefit.reduce((sum, val, idx) =&gt; sum + calculatePVSingleAmount(annualDiscountRate, idx + 1, val), 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;Residual Value &lt;span class="info-icon" data-info="buy-residual"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(nominalResidualValue)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(calculatePVSingleAmount(annualDiscountRate, actualDurationYears, nominalResidualValue))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;Tax Benefit on Lease Rent &lt;span class="info-icon" data-info="lease-tax-benefit"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(0)}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(annualNominalLeaseTaxBenefit.reduce((sum, val) =&gt; sum + val, 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;${formatCurrency(annualNominalLeaseTaxBenefit.reduce((sum, val, idx) =&gt; sum + calculatePVSingleAmount(annualDiscountRate, idx + 1, val), 0))}&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr class="subtotal-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;Total Inflows (Nominal)&lt;/b&gt; &lt;span class="info-icon" data-info="total-inflows-nominal"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;${formatCurrency(annualNominalDepreciationBenefit.reduce((sum, val) =&gt; sum + val, 0) + nominalResidualValue + (modeOfFinance === 'loan' ? annualLoanInterestPayments.reduce((sum, val) =&gt; sum + val, 0) * corporateTaxRate : 0))}&lt;/b&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;${formatCurrency(annualNominalDepreciationBenefit.reduce((sum, val, idx) =&gt; sum + calculatePVSingleAmount(annualDiscountRate, idx + 1, val), 0) + calculatePVSingleAmount(annualDiscountRate, actualDurationYears, nominalResidualValue) + (modeOfFinance === 'loan' ? annualLoanInterestPayments.reduce((sum, val, idx) =&gt; sum + calculatePVSingleAmount(annualDiscountRate, idx + 1, val * corporateTaxRate), 0) : 0))}&lt;/b&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;${formatCurrency(annualNominalLeaseTaxBenefit.reduce((sum, val) =&gt; sum + val, 0))}&lt;/b&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;${formatCurrency(annualNominalLeaseTaxBenefit.reduce((sum, val, idx) =&gt; sum + calculatePVSingleAmount(annualDiscountRate, idx + 1, val), 0))}&lt;/b&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr&gt;&lt;td colspan="5"&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr class="total-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;NET COST (Nominal)&lt;/b&gt; &lt;span class="info-icon" data-info="net-cost-nominal"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;${formatCurrency(calculatedTotalNominalBuyOutflow)}&lt;/b&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;${formatCurrency(calculatedTotalNominalLeaseOutflow)}&lt;/b&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;tr class="total-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;NET COST (PV)&lt;/b&gt; &lt;span class="info-icon" data-info="net-cost-pv"&gt;<span class="s1">ⓘ</span>&lt;/span&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;${formatCurrency(c.buyNetCostPV)}&lt;/b&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;b&gt;${formatCurrency(c.leaseNetCostPV)}&lt;/b&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;td&gt;&lt;/td&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (outputs.sideBySideTbody) outputs.sideBySideTbody.innerHTML = sideBySideTbodyHtml;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Get the modal elements</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const infoModal = document.getElementById('infoModal');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const closeModal = document.querySelector('.close-button');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const modalTitle = document.getElementById('modal-title');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const modalBody = document.getElementById('modal-body');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Function to open the modal</p>
+<p class="p1"><span class="Apple-converted-space">            </span>function openModal(title, body) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (modalTitle) modalTitle.innerHTML = title;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (modalBody) modalBody.innerHTML = body;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (infoModal) infoModal.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Event listener for info icons</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.info-icon').forEach(icon =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>icon.addEventListener('click', (event) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const infoKey = event.target.dataset.info;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const content = infoContent[infoKey];</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (content) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>openModal(content.title, content.body);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Event listener for close button</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (closeModal) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>closeModal.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (infoModal) infoModal.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Close modal when clicking outside of it</p>
+<p class="p1"><span class="Apple-converted-space">            </span>window.addEventListener('click', (event) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (event.target == infoModal) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>infoModal.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Attach event listeners to all input fields to trigger calculation on change</p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (const key in inputs) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const element = inputs[key];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (element) { // Check if the element exists before adding listener</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>element.addEventListener('change', calculate);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>element.addEventListener('input', calculate); // For real-time updates on text inputs</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Attach event listener to the calculate button</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const calculateButton = document.getElementById('calculateButton');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (calculateButton) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>calculateButton.addEventListener('click', calculate);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Attach event listener to the reset button</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const resetButton = document.getElementById('resetButton');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (resetButton) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>resetButton.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>for (const key in inputs) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const element = inputs[key];</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>if (element) {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>element.value = initialInputValues[key];</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>calculate(); // Recalculate with reset values</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Initial calculation on page load</p>
+<p class="p1"><span class="Apple-converted-space">            </span>calculate();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
